@@ -1,7 +1,11 @@
 const express = require('express')
-
 const app1 = express()
 const port = 5005
+
+
+const bodyParser=require('body-parser')
+app1.use(bodyParser.json())
+app1.use(bodyParser.urlencoded({extended:false}))
 
 //mongodb
 
@@ -60,5 +64,8 @@ app1.get("/nuevo", (req, res) => res.json({
     edad: 29,
     ciudad: "Bogotá"
 }))
+
+let rutas=require('./routes/rutas')
+app1.use('/articulos',rutas)
 
 app1.listen(port, () => console.log('Servidor levantado'))

@@ -1,9 +1,10 @@
 const express= require('express')
-
-
 const app1=express()
 const port=5005
 
+const bodyParser=require("body-parser")
+app1.use(bodyParser.json())
+app1.use(bodyParser.urlencoded({extended:false}))
 //Conexión base de datos
 const mongoose=require('mongoose')
 
@@ -63,5 +64,8 @@ app1.get('/nuevo_usuario',(req,res)=>res.json({
     Edad:29,
     usuario:"lfsalasnu"
 }))
+
+let rutas=require('./router/rutas')
+app1.use('/articulos2',rutas)
 
 app1.listen(port,()=>console.log("Servidor Levantado..."))

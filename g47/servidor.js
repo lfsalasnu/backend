@@ -7,8 +7,9 @@ const bodyParser=require('body-parser')
 app1.use(bodyParser.json())
 app1.use(bodyParser.urlencoded({extended:false}))
 
+//.connect("mongodb://localhost:27017/g_47")
 mongoose
-    .connect("mongodb://localhost:27017/g_47")
+    .connect("mongodb+srv://trueke:123456789abcd@cluster0.py9ltpf.mongodb.net/trueke_g47")
     .then(console.log("Conectado a la base de datos"))
 
 

@@ -1,10 +1,11 @@
 const express = require('express')
 const mongoose=require('mongoose')
-
-app1.use(express.json())
 const app1=express()
-
 const port=5005
+
+const bodyParser=require('body-parser')
+app1.use(bodyParser.json())
+app1.use(bodyParser.urlencoded({extended:false}))
 
 mongoose
     .connect("mongodb://localhost:27017/g_47")
@@ -57,6 +58,8 @@ app1.get("/guardar/:articulo",(req,res)=>{
     res.json(articulo)
 })
 
+const rutas=require('./router/rutas')
+app1.use('/servicios',rutas)
 
 
 app1.listen(port,()=>console.log('Servidor...'))
